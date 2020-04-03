@@ -3,10 +3,14 @@
     import Button from '../common/Button.svelte'
     import BookGrid from './BookGrid.svelte'
     import { httpGet } from '../common/api.js'
-let books =[]
-onMount( async function() {
-  const {data} = await httpGet("/?_sort=id&_order=desc")
-books = data
+
+  let books =[]
+  onMount( async function() {
+    const {data} = await httpGet("/?_sort=id&_order=desc")
+  books = data
+
+
+
 })
    
 </script>
@@ -21,9 +25,9 @@ This is a library for the people. Welcome. Read the books  here. Be inspired.
  Go home, and share them with your fmaily
 </p>
 
-  <Button>+ Add Book</Button>
+  <Button to="/create">+ Add Book</Button>
 
-<BookGrid books={books}></BookGrid>
+<BookGrid {books}></BookGrid>
 <style>
   header {
     margin: var(--spacingMedium) 0 var(--spacingLarge) 0;
